@@ -6,13 +6,13 @@ def main(secret: str):
     if secret != SECRET['code']:
         return 403, None
 
-    result = []
+    results = []
     for url in Url.find_all():
-        result.append({
+        results.append({
             'name': url.name,
             'target': url.target,
         })
 
     return 200, {
-        'result': result,
+        'results': results,
     }
