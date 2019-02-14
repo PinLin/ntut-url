@@ -17,6 +17,15 @@ def setting_browse():
         return abort(code)
 
 
-@api.route('/create', methods=['GET'])
+@api.route('/create', methods=['POST'])
 def setting_create():
-    return jsonify(create.main())
+    secret = request.args.get('secret')
+    data = request.json
+
+    code, response = create.main(secret, data)
+
+    if code == 201:
+        return jsonify(response)
+
+    else:
+        return abort(code)
