@@ -27,7 +27,7 @@ const loginSystem = async () => {
 
         localStorage.setItem('profile', JSON.stringify({ secret }))
 
-        // refreshView(res.results)
+        refreshView(res.results)
 
         $('#urlLine').removeClass(['d-none'])
         $('#urlBox').removeClass(['d-none'])
@@ -42,6 +42,48 @@ const loginSystem = async () => {
 
         alert("Unable to establish connection.")
     }
+}
+
+const refreshView = (urls) => {
+    let view = $('#urlBox .urls')
+
+    view.empty()
+
+    view.append(newTitle())
+
+    urls.forEach((url) => {
+        view.append(newUrl(url))
+    })
+
+    view.append(newUrlAdder())
+}
+
+const newTitle = () => {
+    return $(`
+        <div class="url row">
+            <h3 class="text-center col-sm-6">Name</h3>
+            <h3 class="text-center col-sm-6">Target</h3>
+        </div>
+    `)
+}
+
+const newUrl = (data) => {
+    return $(`
+        <div class="url row">
+            <a class="text-center col-sm-6" href="/${data.name}" target="_blank">${data.name}</a>
+            <a class="text-center col-sm-6" href="${data.target}" target="_blank">${data.target}</a>
+        </div>
+    `)
+}
+
+const newUrlAdder = () => {
+    return $(`
+        <div class="url row">
+            <input class="name text-center col-sm-6" name="name" type="text" placeholder="Enter the name.">
+            <input class="target text-center col-sm-6" name="target" type="text" placeholder="Enter the target.">
+            <a class="btn btn-primary col-12" href="javascript:">Create</a>
+        </div>
+    `)
 }
 
 const callBrowse = (secret) => {
