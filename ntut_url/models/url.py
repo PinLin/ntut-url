@@ -15,16 +15,18 @@ class Url:
         db = sqlite3.connect(db_file)
         cursor = db.cursor()
         cursor.execute('''CREATE TABLE IF NOT EXISTS url (
+            _id INTEGER,
             name TEXT,
             target TEXT,
-            PRIMARY KEY (name)
+            PRIMARY KEY (_id)
             )''')
 
     @staticmethod
     def create(name: str, target: str):
         db = sqlite3.connect(db_file)
         cursor = db.cursor()
-        cursor.execute('''INSERT INTO url VALUES (?, ?)''', [name, target])
+        cursor.execute('''INSERT INTO url
+            (name, target) VALUES (?, ?)''', [name, target])
         db.commit()
 
     @staticmethod
@@ -43,6 +45,7 @@ class Url:
 
         result = []
         for name, in cursor.fetchall():
+            print(name)
             result.append(clas(name))
 
         return result
