@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, redirect, abort
 from ..api.redirect import process
 
 api = Blueprint('redirect', __name__)
@@ -6,4 +6,10 @@ api = Blueprint('redirect', __name__)
 
 @api.route('/<name>', methods=['GET'])
 def redirect_process(name: str):
-    return jsonify(process.main(name))
+    code, target = process.main(name)
+
+    if code // 100 == 3:
+        return redirect(target, code=code)
+
+    else:
+        return abort(code)
