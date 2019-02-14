@@ -6,7 +6,7 @@ api = Blueprint('setting', __name__)
 
 @api.route('/browse', methods=['GET'])
 def setting_browse():
-    secret = request.args.get('secret')
+    secret = request.headers.get('Secret')
 
     code, response = browse.main(secret)
 
@@ -19,7 +19,7 @@ def setting_browse():
 
 @api.route('/create', methods=['POST'])
 def setting_create():
-    secret = request.args.get('secret')
+    secret = request.headers.get('Secret')
     data = request.json
 
     code, response = create.main(secret, data)
