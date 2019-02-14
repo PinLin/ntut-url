@@ -1,7 +1,16 @@
-from flask import Blueprint, request, abort, jsonify
+import sys
+from flask import Blueprint, request, abort, jsonify, send_from_directory
 from ..api.setting import browse, create
 
 api = Blueprint('setting', __name__)
+
+
+@api.route('/', defaults={'filename': None}, methods=['GET'])
+@api.route('/<filename>', methods=['GET'])
+def setting(filename: str):
+    if not filename:
+        filename = 'index.html'
+    return send_from_directory(sys.path[0] + '/ntut_url/pages', filename)
 
 
 @api.route('/browse', methods=['GET'])
