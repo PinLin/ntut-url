@@ -26,6 +26,11 @@ const loginSystem = async () => {
         console.log(res)
 
         localStorage.setItem('profile', JSON.stringify({ secret }))
+
+        // refreshView(res.results)
+
+        $('#urlLine').removeClass(['d-none'])
+        $('#urlBox').removeClass(['d-none'])
     }
     catch (err) {
         console.log(err)

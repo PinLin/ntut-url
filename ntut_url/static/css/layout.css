@@ -46,6 +46,32 @@ header {
 }
 #loginBox .login {
     background: #f5aa0a;
+    margin-top: 5%;
+}
+
+#urlBox .urls {
+    background: #fff;
+    border-radius: 5px 5px 5px 5px;
+}
+#urlBox .url {
+    padding: 5px;
+}
+#urlBox .url h3 {
+    color: #67666e;
+    font-size: 20px;
+}
+#urlBox .url a {
+    font-size: 16px;
+}
+#urlBox .url input {
+    font-size: 16px;
+    line-height: 32px;
+    color: #000;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
 }
 
 footer {
@@ -60,7 +86,6 @@ footer {
     display: inline-block;
     border: none;
     border-radius: 5px;
-    margin-top: 5%;
 }
 
 .btn:hover {
