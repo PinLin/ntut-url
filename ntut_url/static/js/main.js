@@ -81,9 +81,45 @@ const newUrlAdder = () => {
         <div class="url row">
             <input class="name text-center col-sm-6" name="name" type="text" placeholder="Enter the name.">
             <input class="target text-center col-sm-6" name="target" type="text" placeholder="Enter the target.">
-            <a class="btn btn-primary col-12" href="javascript:">Create</a>
+            <a class="btn btn-primary col-12" href="javascript:" onclick="createUrl()">Create</a>
         </div>
     `)
+}
+
+const createUrl = async () => {
+    let secret = $('#loginBox .secret input')[0].value
+    let name = $('#urlBox .name')[0].value
+    let target = $('#urlBox .target')[0].value
+
+    if (!secret) {
+        alert("Verification failed.")
+        return
+    }
+
+    if (!name || !target) {
+        alert("Please enter url information.")
+        return
+    }
+
+    try {
+        let res = await callCreate(secret, name, target)
+        console.log(res)
+
+        res = await callBrowse(secret)
+        console.log(res)
+
+        refreshView(res.results)
+    }
+    catch (err) {
+        console.log(err)
+
+        if (err.status == 401) {
+            alert("Verification failed.")
+            return
+        }
+
+        alert("Unable to establish connection.")
+    }
 }
 
 const callBrowse = (secret) => {
@@ -95,5 +131,22 @@ const callBrowse = (secret) => {
             success: (res) => { resolve(res) },
             error: (err) => { reject(err) }
         })
+    })
+}
+
+const callCreate = (secret, name, target) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: `${domain}/api/create`,
+            headers: { Secret: secret },
+            data: JSON.stringify({ name, target }),
+            processData: false,
+            contentType: 'application/json; charset=UTF-8',
+            success: (res) => { resolve(res) },
+            error: (err) => { reject(err) }
+        })
+
     })
 }
