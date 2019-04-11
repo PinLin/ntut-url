@@ -1,5 +1,5 @@
 from flask import Blueprint, request, abort, jsonify
-from ..controller.setting import create
+from ..controller.create_url import main as create_url
 
 app = Blueprint('setting', __name__)
 
@@ -10,7 +10,7 @@ def create_route():
     name = data['name']
     target = data['target']
 
-    code, response = create.main(name, target)
+    code, response = create_url(name, target)
 
     if code == 201:
         return jsonify(response)

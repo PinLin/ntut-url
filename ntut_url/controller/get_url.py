@@ -1,4 +1,4 @@
-from ...models.url import Url
+from ..models.url import Url
 
 
 def main(name: str):
