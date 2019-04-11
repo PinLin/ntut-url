@@ -45,7 +45,6 @@ class Url:
 
         result = []
         for name, in cursor.fetchall():
-            print(name)
             result.append(clas(name))
 
         return result
