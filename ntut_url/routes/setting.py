@@ -1,4 +1,3 @@
-import sys
 from flask import Blueprint, request, abort, jsonify
 from ..controller.setting import create
 
