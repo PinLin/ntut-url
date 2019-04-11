@@ -2,11 +2,11 @@ import sys
 from flask import Blueprint, request, abort, jsonify
 from ..controller.setting import create
 
-api = Blueprint('setting', __name__)
+app = Blueprint('setting', __name__)
 
 
-@api.route('/create', methods=['POST'])
-def setting_create():
+@app.route('/create', methods=['POST'])
+def create_route():
     data = request.json
     name = data['name']
     target = data['target']
