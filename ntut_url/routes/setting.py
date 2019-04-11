@@ -1,6 +1,6 @@
 import sys
 from flask import Blueprint, request, abort, jsonify
-from ..api.setting import browse, create
+from ..controller.setting import browse, create
 
 api = Blueprint('setting', __name__)
 

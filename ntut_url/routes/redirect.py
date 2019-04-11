@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, abort
-from ..api.redirect import process
+from ..controller.redirect import process
 
 api = Blueprint('redirect', __name__)
 
