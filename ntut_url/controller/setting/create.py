@@ -1,14 +1,7 @@
 from ...models.url import Url
-from ...config import SECRET
 
 
-def main(secret: str, data: dict):
-    if secret != SECRET['code']:
-        return 401, None
-
-    name = data['name']
-    target = data['target']
-
+def main(name: str, target: str):
     if Url.is_exist(name):
         return 403, None
 

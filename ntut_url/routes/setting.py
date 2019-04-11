@@ -7,9 +7,7 @@ api = Blueprint('setting', __name__)
 
 @api.route('/browse', methods=['GET'])
 def setting_browse():
-    secret = request.headers.get('Secret')
-
-    code, response = browse.main(secret)
+    code, response = browse.main()
 
     if code == 200:
         return jsonify(response)
@@ -20,10 +18,11 @@ def setting_browse():
 
 @api.route('/create', methods=['POST'])
 def setting_create():
-    secret = request.headers.get('Secret')
     data = request.json
+    name = data['name']
+    target = data['target']
 
-    code, response = create.main(secret, data)
+    code, response = create.main(name, target)
 
     if code == 201:
         return jsonify(response)
