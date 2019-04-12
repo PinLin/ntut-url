@@ -3,7 +3,7 @@ from ..models.url import Url
 
 def main(name: str, target: str):
     if Url.is_exist(name):
-        return 403, None
+        return None
 
     if not '://' in target:
         target = 'http://' + target
@@ -16,6 +16,6 @@ def main(name: str, target: str):
         'target': url.target,
     }
 
-    return 201, {
+    return {
         'result': result,
     }
