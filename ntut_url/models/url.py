@@ -37,18 +37,6 @@ class Url:
 
         return cursor.fetchone()[0] != 0
 
-    @classmethod
-    def find_all(clas):
-        db = sqlite3.connect(db_file)
-        cursor = db.cursor()
-        cursor.execute('SELECT name FROM url')
-
-        result = []
-        for name, in cursor.fetchall():
-            result.append(clas(name))
-
-        return result
-
     @property
     def name(self):
         cursor = self.__db.cursor()
