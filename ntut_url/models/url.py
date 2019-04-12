@@ -30,7 +30,7 @@ class Url:
         db.commit()
 
     @staticmethod
-    def is_exist(name: str):
+    def check_name(name: str):
         db = sqlite3.connect(db_file)
         cursor = db.cursor()
         cursor.execute('SELECT COUNT(*) FROM url WHERE name = ?', [name])

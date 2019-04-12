@@ -2,7 +2,7 @@ from ..models.url import Url
 
 
 def main(name: str, target: str):
-    if Url.is_exist(name):
+    if Url.check_name(name):
         return None
 
     if not '://' in target:
