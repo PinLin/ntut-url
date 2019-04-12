@@ -7,8 +7,8 @@ app = Blueprint('setting', __name__)
 @app.route('/create', methods=['POST'])
 def create_route():
     data = request.json
-    name = data['name']
-    target = data['target']
+    name = data.get('name')
+    target = data.get('target')
 
     response = create(name, target)
 
