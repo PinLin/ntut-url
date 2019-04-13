@@ -2,17 +2,6 @@
 
 let domain = (new URL(location.href)).origin
 
-const loadPage = async () => {
-    let data = localStorage.getItem('profile')
-    if (data) {
-        let profile = JSON.parse(data)
-
-        $('#loginBox .secret input')[0].value = profile.secret
-
-        await loginSystem()
-    }
-}
-
 const loginSystem = async () => {
     let secret = $('#loginBox .secret input')[0].value
 
