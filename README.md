@@ -1,5 +1,4 @@
 # ntut_url
-
 縮網址服務啦
 
 ## 安裝
@@ -14,15 +13,7 @@ cd ntut_url
 pip3 install -r requirements.txt
 ```
 
-3. 修改 `ntut_url/config.py` 中的密語。
-```bash
-vim ntut_url/config.py
-```
-
-4. 開啟服務。
+3. 開啟服務。
 ```bash
 python3 run.py
 ```
-
-## 用法
-1. 進入 http://localhost:5000/static/index.html 新增縮網址。
