@@ -1,15 +1,20 @@
 from flask import Blueprint, redirect, abort
-from ..controller.redirect import process
+from ..controller.find import main as find
 
-api = Blueprint('redirect', __name__)
+app = Blueprint('redirect', __name__)
 
 
-@api.route('/<name>', methods=['GET'])
-def redirect_process(name: str):
-    code, target = process.main(name)
+@app.route('/', methods=['GET'])
+def root_route():
+    return redirect('/static/index.html', code=302)
 
-    if code // 100 == 3:
-        return redirect(target, code=code)
+
+@app.route('/<name>', methods=['GET'])
+def redirect_route(name: str):
+    target = find(name)
+
+    if target:
+        return redirect(target, code=301)
 
     else:
-        return abort(code)
+        return abort(404)

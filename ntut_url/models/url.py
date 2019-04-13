@@ -30,24 +30,12 @@ class Url:
         db.commit()
 
     @staticmethod
-    def is_exist(name: str):
+    def check_name(name: str):
         db = sqlite3.connect(db_file)
         cursor = db.cursor()
         cursor.execute('SELECT COUNT(*) FROM url WHERE name = ?', [name])
 
         return cursor.fetchone()[0] != 0
-
-    @classmethod
-    def find_all(clas):
-        db = sqlite3.connect(db_file)
-        cursor = db.cursor()
-        cursor.execute('SELECT name FROM url')
-
-        result = []
-        for name, in cursor.fetchall():
-            result.append(clas(name))
-
-        return result
 
     @property
     def name(self):
