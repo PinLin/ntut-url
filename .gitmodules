@@ -1,0 +1,3 @@
+[submodule "ntut_url/static/ntut_url_client"]
+	path = ntut_url/static/ntut_url_client
+	url = https://git.ntut.com.tw/PinLin/ntut_url_client.git
