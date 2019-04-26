@@ -1,4 +1,6 @@
 # ntut_url
+[![CircleCI](https://circleci.com/gh/PinLin/ntut_url.svg?style=svg)](https://circleci.com/gh/PinLin/ntut_url) [![LICENSE](https://img.shields.io/github/license/pinlin/ntut_url.svg)](https://github.com/PinLin/ntut_url/blob/master/LICENSE)
+
 縮網址服務啦
 
 ## 安裝
