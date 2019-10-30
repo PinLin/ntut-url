@@ -1,7 +1,7 @@
 import sys
 import sqlite3
 
-db_file = sys.path[0] + '/ntut_url/db/ntut_url.db'
+db_file = sys.path[0] + '/db/ntut_url.db'
 
 
 class Url:

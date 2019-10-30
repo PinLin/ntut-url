@@ -1,5 +1,7 @@
 from flask import Blueprint, request, abort, jsonify
-from ..controller.create import main as create
+
+from controller.create import main as create
+
 
 app = Blueprint('setting', __name__)
 

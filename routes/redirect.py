@@ -1,5 +1,7 @@
 from flask import Blueprint, redirect, abort
-from ..controller.find import main as find
+
+from controller.find import main as find
+
 
 app = Blueprint('redirect', __name__)
 
