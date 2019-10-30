@@ -6,7 +6,7 @@
 ## 安裝
 1. 下載並進入專案目錄。
 ```bash
-git clone https://github.com/PinLin/ntut_url.git
+git clone https://github.com/PinLin/ntut_url.git --recursive
 cd ntut_url
 ```
 
