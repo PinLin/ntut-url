@@ -1,54 +1,24 @@
-import sys
-import sqlite3
+from datetime import datetime
 
-db_file = sys.path[0] + '/db/ntut_url.db'
+from extensions.db import db
 
 
-class Url:
-    def __init__(self, name: str):
-        self.__db = sqlite3.connect(db_file)
-
-        self.__name = name
-
-    @staticmethod
-    def create_table():
-        db = sqlite3.connect(db_file)
-        cursor = db.cursor()
-        cursor.execute('''CREATE TABLE IF NOT EXISTS url (
-            _id INTEGER,
-            name TEXT,
-            target TEXT,
-            PRIMARY KEY (_id)
-            )''')
+class Url(db.Model):
+    name = db.Column(db.String, primary_key=True)
+    target = db.Column(db.String, nullable=False)
+    create_time = db.Column(db.DateTime, default=datetime.now)
 
     @staticmethod
     def create(name: str, target: str):
-        db = sqlite3.connect(db_file)
-        cursor = db.cursor()
-        cursor.execute('''INSERT INTO url
-            (name, target) VALUES (?, ?)''', [name, target])
-        db.commit()
+        """建立縮網址"""
+        url = Url(name=name, target=target)
+
+        db.session.add(url)
+        db.session.commit()
+
+        return url
 
     @staticmethod
-    def check_name(name: str):
-        db = sqlite3.connect(db_file)
-        cursor = db.cursor()
-        cursor.execute('SELECT COUNT(*) FROM url WHERE name = ?', [name])
-
-        return cursor.fetchone()[0] != 0
-
-    @property
-    def name(self):
-        cursor = self.__db.cursor()
-        cursor.execute('SELECT name FROM url WHERE name = ?',
-                       [self.__name])
-
-        return cursor.fetchone()[0]
-
-    @property
-    def target(self):
-        cursor = self.__db.cursor()
-        cursor.execute('SELECT target FROM url WHERE name = ?',
-                       [self.__name])
-
-        return cursor.fetchone()[0]
+    def find(name: str):
+        """取得縮網址"""
+        return Url.query.filter_by(name=name).first()
