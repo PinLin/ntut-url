@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ntut-url"
+version = "0.1.0"
+description = "縮網址服務啦"
+authors = ["Pin Lin <moneycat711@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+flask = "^1.1"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.4"
+autopep8 = "^1.4"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
