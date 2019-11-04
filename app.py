@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, redirect
 
 from extensions.db import db
 from models.url import Url
@@ -22,9 +22,7 @@ def init():
 
 @app.route('/')
 def root():
-    return jsonify({
-        'message': 'Hello World!'
-    })
+    return redirect('/static/index.html')
 
 
 def main():
