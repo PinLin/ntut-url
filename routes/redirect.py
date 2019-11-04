@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, abort
 
-from controller.find import main as find
+from models.url import Url
 
 
 app = Blueprint('redirect', __name__)
@@ -8,10 +8,9 @@ app = Blueprint('redirect', __name__)
 
 @app.route('/<name>', methods=['GET'])
 def redirect_route(name: str):
-    target = find(name)
+    url = Url.find(name)
 
-    if target:
-        return redirect(target, code=301)
+    if not url:
+        abort(404)
 
-    else:
-        return abort(404)
+    return redirect(url.target, code=301)
