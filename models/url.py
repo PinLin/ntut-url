@@ -4,7 +4,8 @@ from extensions.db import db
 
 
 class Url(db.Model):
-    name = db.Column(db.String, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, unique=True)
     target = db.Column(db.String, nullable=False)
     create_time = db.Column(db.DateTime, default=datetime.now)
 
