@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.6"
 flask = "^1.1"
 flask-sqlalchemy = "^2.4"
+gunicorn = "^19.9"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.4"
