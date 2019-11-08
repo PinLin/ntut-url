@@ -1,4 +1,5 @@
 from flask import Blueprint, request, abort, jsonify
+from flask_cors import CORS
 import random
 import string
 
@@ -6,6 +7,7 @@ from models.url import Url
 
 
 app = Blueprint('urls', __name__)
+CORS(app)
 
 
 @app.route('/urls', methods=['POST'])
