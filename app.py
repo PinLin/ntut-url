@@ -23,7 +23,7 @@ def init():
 
 @app.route('/')
 def root():
-    return redirect('/static/index.html')
+    return "Welcome to ntut-url!"
 
 
 def main():
