@@ -3,6 +3,7 @@ from flask_cors import CORS
 import random
 import string
 
+from extensions.db import db
 from models.url import Url
 
 
@@ -35,6 +36,9 @@ def post_urls():
 
     # 建立縮網址
     url = Url.create(name, target)
+
+    db.session.add(url)
+    db.session.commit()
 
     result = {
         'name': url.name,

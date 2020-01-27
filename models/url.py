@@ -14,9 +14,6 @@ class Url(db.Model):
         """建立縮網址"""
         url = Url(name=name, target=target)
 
-        db.session.add(url)
-        db.session.commit()
-
         return url
 
     @staticmethod
