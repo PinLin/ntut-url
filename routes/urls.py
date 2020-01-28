@@ -11,7 +11,7 @@ app = Blueprint('urls', __name__)
 CORS(app)
 
 
-@app.route('/urls', methods=['POST'])
+@app.route('/', methods=['POST'])
 def post_urls():
     data = request.json
     name = data.get('name')

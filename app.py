@@ -10,8 +10,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.register_blueprint(urls_route, url_prefix='/api')
-app.register_blueprint(redirect_route)
+app.register_blueprint(urls_route, url_prefix='/urls')
+app.register_blueprint(redirect_route, url_prefix='/redirect')
 
 db.init_app(app)
 
