@@ -5,6 +5,7 @@ import string
 
 from extensions.db import db
 from models.url import Url
+from services.urls import UrlsService
 
 
 app = Blueprint('urls', __name__)
@@ -18,32 +19,10 @@ def post_urls():
     target = data.get('target')
 
     # 如果 name 已經被使用
-    if name and Url.find(name):
+    if UrlsService.is_exist(name):
         abort(409)
 
-    # 如果沒有給 name
-    if not name:
-        # 隨機產生 name
-        while True:
-            name = ''.join(random.choice(string.ascii_letters +
-                                         string.digits) for x in range(6))
-            if not Url.find(name):
-                break
-
-    # 沒有指明協定就加上 http://
-    if not '://' in target:
-        target = 'http://' + target
-
-    # 建立縮網址
-    url = Url.create(name, target)
-
-    db.session.add(url)
-    db.session.commit()
-
-    result = {
-        'name': url.name,
-        'target': url.target,
-    }
+    result = UrlsService.create_new_url(name, target)
 
     return jsonify({
         'result': result,

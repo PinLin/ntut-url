@@ -1,0 +1,36 @@
+from extensions.db import db
+from models.url import Url
+from utils.generate_name import generate_name
+
+
+class UrlsService:
+    @staticmethod
+    def is_exist(name: str):
+        """
+        檢查短網址是否存在
+        """
+        return Url.find(name) is not None
+
+    @staticmethod
+    def create_new_url(name: str, target: str):
+        """
+        檢查短網址是否存在
+        """
+        # 如果沒有指定 name 就隨機產生一個
+        while not name or UrlsService.is_exist(name):
+            name = generate_name(6)
+
+        # 沒有指明協定就加上 http://
+        if not '://' in target:
+            target = 'http://' + target
+
+        # 建立縮網址
+        url = Url.create(name, target)
+
+        db.session.add(url)
+        db.session.commit()
+
+        return {
+            'name': url.name,
+            'target': url.target,
+        }
