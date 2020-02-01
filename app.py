@@ -1,5 +1,6 @@
 from flask import Flask, redirect
 
+from config import SQLALCHEMY_DATABASE_URI
 from extensions.db import db
 from models.url import Url
 from routes.urls import app as urls_route
@@ -7,7 +8,7 @@ from routes.redirect import app as redirect_route
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.register_blueprint(urls_route, url_prefix='/urls')
