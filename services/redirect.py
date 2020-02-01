@@ -1,7 +1,7 @@
 from models.url import Url
 
 
-class Redirect:
+class RedirectService:
     @staticmethod
     def is_exist(name: str):
         """
@@ -10,7 +10,7 @@ class Redirect:
         return Url.find(name) is not None
 
     @staticmethod
-    def get_target(name:str):
+    def get_target(name: str):
         """
         取得短網址目標
         """
