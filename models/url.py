@@ -5,8 +5,8 @@ from extensions.db import db
 
 class Url(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, unique=True)
-    target = db.Column(db.String, nullable=False)
+    name = db.Column(db.String(99), unique=True)
+    target = db.Column(db.Text, nullable=False)
     create_time = db.Column(db.DateTime, default=datetime.now)
 
     @staticmethod
