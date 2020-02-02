@@ -7,14 +7,14 @@ class UrlsService:
     @staticmethod
     def is_exist(name: str):
         """
-        檢查短網址是否存在
+        檢查縮網址是否存在
         """
         return Url.find(name) != None
 
     @staticmethod
     def create_new_url(name: str, target: str):
         """
-        檢查短網址是否存在
+        檢查縮網址是否存在
         """
         # 如果沒有指定 name 就隨機產生一個
         while not name or UrlsService.is_exist(name):
