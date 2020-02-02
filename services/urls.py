@@ -25,7 +25,7 @@ class UrlsService:
             target = 'http://' + target
 
         # 建立縮網址
-        url = Url.create(name, target)
+        url = Url(name=name, target=target)
 
         db.session.add(url)
         db.session.commit()
