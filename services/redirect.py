@@ -7,7 +7,7 @@ class RedirectService:
         """
         檢查短網址是否存在
         """
-        return Url.find(name) is not None
+        return Url.find(name) != None
 
     @staticmethod
     def get_target(name: str):
