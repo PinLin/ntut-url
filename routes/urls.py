@@ -24,7 +24,7 @@ def post_urls():
         if not UrlsService.is_expired(name):
             abort(409)
 
-    result = UrlsService.create_new_url(name, target, expire_seconds)
+    result = UrlsService.create_url(name, target, expire_seconds)
 
     return jsonify({
         'result': result,

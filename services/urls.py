@@ -27,7 +27,7 @@ class UrlsService:
         return datetime.now() > url.expire_time
 
     @staticmethod
-    def create_new_url(name: str, target: str, expire_seconds: int):
+    def create_url(name: str, target: str, expire_seconds: int):
         """
         新增縮網址
         """
