@@ -8,6 +8,7 @@ class Url(db.Model):
     name = db.Column(db.String(99), unique=True)
     target = db.Column(db.Text, nullable=False)
     create_time = db.Column(db.DateTime, server_default=func.now())
+    expire_time = db.Column(db.DateTime)
 
     @staticmethod
     def find(name: str):

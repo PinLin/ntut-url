@@ -17,12 +17,14 @@ def post_urls():
     data = request.json
     name = data.get('name')
     target = data.get('target')
+    expire_seconds = data.get('expireSeconds')
 
-    # 如果 name 已經被使用
+    # 如果 name 已經被使用且尚未過期
     if UrlsService.is_exist(name):
-        abort(409)
+        if not UrlsService.is_expired(name):
+            abort(409)
 
-    result = UrlsService.create_new_url(name, target)
+    result = UrlsService.create_new_url(name, target, expire_seconds)
 
     return jsonify({
         'result': result,

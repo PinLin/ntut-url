@@ -9,7 +9,7 @@ app = Blueprint('redirect', __name__)
 
 @app.route('/<name>', methods=['GET'])
 def redirect_route(name: str):
-    if UrlsService.is_exist(name):
+    if UrlsService.is_exist(name) and not UrlsService.is_expired(name):
         target = RedirectService.get_target(name)
 
         return redirect(target, code=301)
