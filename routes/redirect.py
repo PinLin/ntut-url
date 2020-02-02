@@ -1,6 +1,7 @@
 from flask import Blueprint, redirect, abort
 
 from services.redirect import RedirectService
+from services.urls import UrlsService
 
 
 app = Blueprint('redirect', __name__)
@@ -8,7 +9,7 @@ app = Blueprint('redirect', __name__)
 
 @app.route('/<name>', methods=['GET'])
 def redirect_route(name: str):
-    if RedirectService.is_exist(name):
+    if UrlsService.is_exist(name):
         target = RedirectService.get_target(name)
 
         return redirect(target, code=301)
