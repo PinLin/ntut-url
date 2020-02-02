@@ -14,13 +14,13 @@ class UrlsService:
     @staticmethod
     def create_new_url(name: str, target: str):
         """
-        檢查縮網址是否存在
+        新增縮網址
         """
         # 如果沒有指定 name 就隨機產生一個
         while not name or UrlsService.is_exist(name):
             name = generate_name(6)
 
-        # 沒有指明協定就加上 http://
+        # target 沒有指明協定就在開頭加上 http://
         if not '://' in target:
             target = 'http://' + target
 
