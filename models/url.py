@@ -9,6 +9,7 @@ class Url(db.Model):
     target = db.Column(db.Text, nullable=False)
     create_time = db.Column(db.DateTime, server_default=func.now())
     expire_time = db.Column(db.DateTime)
+    clicks = db.Column(db.Integer, default=0)
 
     @staticmethod
     def find(name: str):
