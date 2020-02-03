@@ -41,7 +41,8 @@ class UrlsService:
 
         # 設定過期時間
         if expire_seconds != None:
-            expire_time = datetime.now() + timedelta(seconds=expire_seconds)
+            now = datetime.now().replace(microsecond=0)
+            expire_time = now + timedelta(seconds=expire_seconds)
         else:
             expire_time = None
 
