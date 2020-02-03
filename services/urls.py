@@ -46,14 +46,14 @@ class UrlsService:
         else:
             expire_time = None
 
-        # 建立縮網址
+        # 如果已經存在就先刪除
         if UrlsService.is_exist(name):
             url = Url.find(name)
-            url.target = target
-            url.expire_time = expire_time
-        else:
-            url = Url(name=name, target=target, expire_time=expire_time)
+            db.session.delete(url)
+            db.session.commit()
 
+        # 建立縮網址
+        url = Url(name=name, target=target, expire_time=expire_time)
         db.session.add(url)
         db.session.commit()
 
