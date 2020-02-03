@@ -14,6 +14,6 @@ def redirect_route(name: str):
 
         target = RedirectService.get_target(name)
 
-        return redirect(target, code=301)
+        return redirect(target, code=302)
     else:
         abort(404)
