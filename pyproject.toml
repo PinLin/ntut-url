@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ntut-url"
-version = "1.2.0"
+version = "1.3.0"
 description = "縮網址服務啦"
 authors = ["Pin Lin <moneycat711@gmail.com>"]
 license = "MIT"
