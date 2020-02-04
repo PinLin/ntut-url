@@ -7,7 +7,7 @@ from services.urls import UrlsService
 app = Blueprint('redirect', __name__)
 
 
-@app.route('/<name>', methods=['GET'])
+@app.route('/<name>', methods=['GET'], strict_slashes=False)
 def redirect_route(name: str):
     if UrlsService.is_exist(name) and not UrlsService.is_expired(name):
         RedirectService.click_url(name)
