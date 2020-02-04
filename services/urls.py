@@ -60,6 +60,6 @@ class UrlsService:
         return {
             'name': url.name,
             'target': url.target,
-            'create_time': str(url.create_time),
-            'expire_time': str(url.expire_time),
+            'createTime': str(url.create_time),
+            'expireTime': str(url.expire_time),
         }
